@@ -171,33 +171,51 @@ const braveNames = {
   ]
 };
 
-let selectedGender = 'male'; // Default gender
+let currentGender = localStorage.getItem("gender") || "male";
+
+// Set gender button active on page load
+window.onload = () => {
+  const savedName = localStorage.getItem("userName");
+  const braveName = localStorage.getItem("braveName");
+
+  document.getElementById("genderMale").classList.toggle("active", currentGender === "male");
+  document.getElementById("genderFemale").classList.toggle("active", currentGender === "female");
+
+  if (savedName) document.getElementById("nameInput").value = savedName;
+  if (braveName) document.getElementById("result").innerHTML = `Your Brave Name: <b>${braveName}</b>`;
+};
 
 function toggleGender(gender) {
-  selectedGender = gender;
+  currentGender = gender;
+  localStorage.setItem("gender", gender);
 
-  // Toggle active class
-  document.getElementById('genderMale').classList.remove('active');
-  document.getElementById('genderFemale').classList.remove('active');
-  
-  if (gender === 'male') {
-    document.getElementById('genderMale').classList.add('active');
-  } else {
-    document.getElementById('genderFemale').classList.add('active');
-  }
+  document.getElementById("genderMale").classList.toggle("active", gender === "male");
+  document.getElementById("genderFemale").classList.toggle("active", gender === "female");
 }
 
 function generateName() {
-  const nameInput = document.getElementById('nameInput').value.trim();
-
-  if (nameInput === '') {
-    document.getElementById('result').innerHTML = "Please enter your name.";
+  const input = document.getElementById("nameInput").value.trim();
+  if (!input) {
+    alert("Please enter your name!");
     return;
   }
 
-  const namesArray = braveNames[selectedGender];
-  const randomIndex = Math.floor(Math.random() * namesArray.length);
-  const braveName = namesArray[randomIndex];
+  const hash = [...input].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const namesArray = braveNames[currentGender];
+  const index = hash % namesArray.length;
+  const result = namesArray[index];
 
-  document.getElementById('result').innerHTML = `${nameInput} ➜ <strong>${braveName}</strong>`;
+  localStorage.setItem("userName", input);
+  localStorage.setItem("braveName", result);
+  localStorage.setItem("gender", currentGender);
+
+  document.getElementById("result").innerHTML = `Your Brave Name: <b>${result}</b>`;
+}
+
+function resetGenerator() {
+  localStorage.clear();
+  document.getElementById("nameInput").value = "";
+  document.getElementById("result").innerHTML = "";
+  currentGender = "male";
+  toggleGender("male");
 }
