@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brave Name Generator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,10 +10,24 @@
   <div class="container">
     <h1>🔥 Brave Name Challenge 🔥</h1>
     <p>Enter your name & unlock your Arabic alter ego!</p>
+
+    <!-- Gender Toggle Buttons -->
+    <div class="gender-toggle">
+      <button id="genderMale" class="active" onclick="toggleGender('male')">Male</button>
+      <button id="genderFemale" onclick="toggleGender('female')">Female</button>
+    </div>
+
+    <!-- Input Field -->
     <input type="text" id="nameInput" placeholder="Your first name..." />
+
+    <!-- Generate Button -->
     <button onclick="generateName()">Get Brave Name</button>
+
+    <!-- Result Display -->
     <div id="result"></div>
   </div>
+
+  <!-- JavaScript File -->
   <script src="script.js"></script>
 </body>
 </html>
