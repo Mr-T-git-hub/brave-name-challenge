@@ -104,5 +104,5 @@ function generateName() {
   const index = hash % braveNames.length;
   const result = braveNames[index];
 
-  document.getElementById("result").innerHTML = `Your Brave Name: <b>${result}</b> 🐪`;
+  document.getElementById("result").innerHTML = `Your Brave Name: <b>${result}</b> `;
 }
