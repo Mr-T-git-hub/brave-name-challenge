@@ -222,3 +222,17 @@ function resetGenerator() {
   currentGender = "male";
   toggleGender("male");
 }
+function copyToClipboard() {
+  const result = document.getElementById("result").innerText;
+  if (!result) {
+    alert("Aucun Brave Name à copier !");
+    return;
+  }
+
+  navigator.clipboard.writeText(result).then(() => {
+    alert("Nom copié ! Tu peux le coller sur Insta 😎");
+  }).catch(err => {
+    console.error("Erreur lors de la copie :", err);
+    alert("Erreur lors de la copie 😞");
+  });
+}
