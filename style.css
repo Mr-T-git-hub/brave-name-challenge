@@ -1,35 +1,17 @@
-body {
-  font-family: 'Comic Sans MS', sans-serif;
-  background: linear-gradient(to right, #fceabb, #f8b500);
-  text-align: center;
-  padding: 50px;
-}
-
-.container {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  display: inline-block;
-}
-
-input {
-  padding: 10px;
-  font-size: 16px;
-  width: 60%;
+.gender-toggle {
   margin-bottom: 20px;
 }
 
-button {
-  padding: 10px 20px;
-  background: black;
-  color: white;
+.gender-toggle button {
+  padding: 10px;
+  margin: 0 5px;
+  background: #ddd;
   border: none;
   cursor: pointer;
   border-radius: 10px;
 }
 
-#result {
-  margin-top: 30px;
-  font-size: 24px;
+.gender-toggle button.active {
+  background: black;
+  color: white;
 }
