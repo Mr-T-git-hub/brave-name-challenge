@@ -5,6 +5,11 @@ body {
   text-align: center;
   padding: 50px;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* Container Styling */
@@ -15,7 +20,8 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   display: inline-block;
   max-width: 500px;
-  width: 90%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Input Field Styling */
@@ -107,7 +113,6 @@ button:hover {
   background-color: #c82361;
 }
 
-/* Gender Button Styling */
 .gender-btn {
   background: #ddd;
   color: #000;
@@ -119,18 +124,12 @@ button:hover {
   color: white;
 }
 
-/* Button and Input Size */
-button, .gender-btn {
-  font-size: 16px;
-  padding: 12px 18px;
-}
-
 /* Action Buttons */
 .action-buttons {
   margin-top: 10px;
 } 
 
-/* Media Queries for Small Screens */
+/* Responsive Styling */
 @media (max-width: 400px) {
   input {
     width: 100%;
