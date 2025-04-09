@@ -1,33 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brave Name Generator</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .gender-button {
+      background-color: #ddd;
+    }
+
+    .gender-button.active {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    #generateBtn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🔥 Brave Name Challenge 🔥</h1>
-    <p>Enter your name & unlock your Arabic alter ego!</p>
 
-    <!-- Gender Selection -->
-    <div class="gender-toggle">
-      <button id="genderMale" class="active" onclick="toggleGender('male')">👨 Male</button>
-      <button id="genderFemale" onclick="toggleGender('female')">👩 Female</button>
-    </div>
+  <h1>Brave Name Generator</h1>
 
-    <!-- Input Field -->
-    <input type="text" id="nameInput" placeholder="Your first name..." />
-
-    <!-- Generate Button -->
-    <button onclick="generateName()">Get Brave Name</button>
-
-    <!-- Result Display -->
-    <div id="result"></div>
+  <div>
+    <button id="genderMale" class="gender-button active" onclick="toggleGender('male')">Male</button>
+    <button id="genderFemale" class="gender-button" onclick="toggleGender('female')">Female</button>
   </div>
 
-  <!-- JavaScript File -->
+  <div>
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+  </div>
+
+  <div>
+    <button id="generateBtn" onclick="generateName()">Generate Brave Name</button>
+  </div>
+
+  <div id="result"></div>
+
   <script src="script.js"></script>
+
 </body>
 </html>
