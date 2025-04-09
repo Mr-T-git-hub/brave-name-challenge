@@ -176,27 +176,27 @@ const braveNames = {
   ]
 };
 
+let currentGender = "male";
 
-let currentGender = localStorage.getItem("gender") || "male";
-
-// Set gender button active on page load
-window.onload = () => {
-  const savedName = localStorage.getItem("userName");
-  const braveName = localStorage.getItem("braveName");
-
-  document.getElementById("genderMale").classList.toggle("active", currentGender === "male");
-  document.getElementById("genderFemale").classList.toggle("active", currentGender === "female");
-
-  if (savedName) document.getElementById("nameInput").value = savedName;
-  if (braveName) document.getElementById("result").innerHTML = `Your Brave Name: <b>${braveName}</b>`;
-};
+// 🔒 Fonction de hachage stable
+function hashString(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0; // force to 32-bit
+  }
+  return Math.abs(hash);
+}
 
 function toggleGender(gender) {
   currentGender = gender;
-  localStorage.setItem("gender", gender);
 
   document.getElementById("genderMale").classList.toggle("active", gender === "male");
   document.getElementById("genderFemale").classList.toggle("active", gender === "female");
+
+  // Mettre à jour automatiquement si un nom est déjà saisi
+  const name = document.getElementById("nameInput").value.trim();
+  if (name) showBraveName(name);
 }
 
 function generateName() {
@@ -206,20 +206,17 @@ function generateName() {
     return;
   }
 
-  const hash = [...input].reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  showBraveName(input);
+}
+
+function showBraveName(name) {
   const namesArray = braveNames[currentGender];
-  const index = hash % namesArray.length;
+  const index = hashString(name.toLowerCase()) % namesArray.length;
   const result = namesArray[index];
-
-  localStorage.setItem("userName", input);
-  localStorage.setItem("braveName", result);
-  localStorage.setItem("gender", currentGender);
-
   document.getElementById("result").innerHTML = `Your Brave Name: <b>${result}</b>`;
 }
 
 function resetGenerator() {
-  localStorage.clear();
   document.getElementById("nameInput").value = "";
   document.getElementById("result").innerHTML = "";
   currentGender = "male";
