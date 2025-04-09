@@ -171,25 +171,33 @@ const braveNames = {
   ]
 };
 
-let currentGender = 'male'; // Default gender
+let selectedGender = "male";
 
 function toggleGender(gender) {
-  currentGender = gender;
-  document.getElementById("genderMale").classList.toggle("active", gender === 'male');
-  document.getElementById("genderFemale").classList.toggle("active", gender === 'female');
+  selectedGender = gender;
+
+  document.getElementById("genderMale").classList.remove("active");
+  document.getElementById("genderFemale").classList.remove("active");
+
+  if (gender === "male") {
+    document.getElementById("genderMale").classList.add("active");
+  } else {
+    document.getElementById("genderFemale").classList.add("active");
+  }
 }
 
 function generateName() {
-  const input = document.getElementById("nameInput").value.trim();
-  if (!input) {
-    alert("Please enter your name!");
+  const nameInput = document.getElementById("nameInput").value.trim();
+  const resultDiv = document.getElementById("result");
+
+  if (!nameInput) {
+    resultDiv.textContent = "Please enter your name!";
     return;
   }
-  
-  const hash = [...input].reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const namesArray = braveNames[currentGender];
-  const index = hash % namesArray.length;
-  const result = namesArray[index];
 
-  document.getElementById("result").innerHTML = `Your Brave Name: <b>${result}</b>`;
+  const names = braveNames[selectedGender];
+  const randomIndex = Math.floor(Math.random() * names.length);
+  const braveName = names[randomIndex];
+
+  resultDiv.innerHTML = `<p><strong>${nameInput}</strong>, your brave name is:</p><p style="font-size: 28px;">${braveName}</p>`;
 }
