@@ -1,6 +1,6 @@
 /* General Body Styling */
 body {
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(to right, #fceabb, #f8b500);
   text-align: center;
   padding: 50px;
@@ -12,18 +12,25 @@ body {
   background: white;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   display: inline-block;
+  max-width: 500px;
+  width: 90%;
 }
 
 /* Input Field Styling */
 input {
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
-  width: 60%;
+  width: 80%;
   margin-bottom: 20px;
   border-radius: 10px;
   border: 1px solid #ccc;
+  outline: none;
+}
+
+input:focus {
+  border-color: #f8b500;
 }
 
 /* Button Styling */
@@ -34,37 +41,45 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 10px;
+  margin: 5px;
+  transition: background 0.3s ease;
 }
 
 button:hover {
   background-color: #333;
 }
 
+.reset-btn {
+  background-color: #888;
+}
+
+.reset-btn:hover {
+  background-color: #666;
+}
+
 /* Result Text Styling */
 #result {
   margin-top: 30px;
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
-/* Gender Toggle Buttons */
+/* Gender Toggle */
 .gender-toggle {
   margin-bottom: 20px;
 }
 
-.gender-toggle button {
-  padding: 10px;
-  margin: 0 5px;
-  background: #ddd; /* Default background for unselected buttons */
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
+.gender-btn {
+  background: #ddd;
+  color: #000;
 }
 
-.gender-toggle button.active {
-  background: black; /* Highlight active button */
-  color: white; /* White text for active button */
+.gender-btn.active {
+  background: black;
+  color: white;
 }
 
-.gender-toggle button:hover {
-  background-color: #bbb; /* Hover effect for toggle buttons */
+/* Action Buttons */
+.action-buttons {
+  margin-top: 10px;
 }
