@@ -31,6 +31,7 @@ input {
 
 input:focus {
   border-color: #f8b500;
+  box-shadow: 0 0 5px rgba(248, 181, 0, 0.5);
 }
 
 /* Button Styling */
@@ -62,6 +63,24 @@ button:hover {
   margin-top: 30px;
   font-size: 22px;
   font-weight: bold;
+  opacity: 0;
+  animation: fadeIn 1s forwards, blink 2s step-end 2;
+}
+
+/* Animation for Result */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Gender Toggle */
@@ -69,9 +88,30 @@ button:hover {
   margin-bottom: 20px;
 }
 
+#resultContainer button,
+#resultContainer a {
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #e1306c;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#resultContainer button:hover,
+#resultContainer a:hover {
+  background-color: #c82361;
+}
+
+/* Gender Button Styling */
 .gender-btn {
   background: #ddd;
   color: #000;
+  transition: all 0.3s ease;
 }
 
 .gender-btn.active {
@@ -79,7 +119,25 @@ button:hover {
   color: white;
 }
 
+/* Button and Input Size */
+button, .gender-btn {
+  font-size: 16px;
+  padding: 12px 18px;
+}
+
 /* Action Buttons */
 .action-buttons {
   margin-top: 10px;
+} 
+
+/* Media Queries for Small Screens */
+@media (max-width: 400px) {
+  input {
+    width: 100%;
+  }
+
+  button, .gender-btn {
+    width: 100%;
+    margin: 5px 0;
+  }
 }
